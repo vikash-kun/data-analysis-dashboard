@@ -1,4 +1,5 @@
 import pandas as pd
+from src.analysis import explore_data
 
 df = pd.read_csv(r"C:\Users\Vikash\git demo\data-analysis-dashboard\data\netflix_titles.csv")
-print(df.head())
+explore_data(df)
