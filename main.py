@@ -6,9 +6,11 @@ from src.eda import (
     content_type_percentage,
     release_year_range,
     most_common_release_years,
-    most_common_ratings
+    most_common_ratings,
+    compare_content_types,
+    compare_release_years,
+    most_common_year_by_type
 )
-
 df = pd.read_csv(r"C:\Users\Vikash\git demo\data-analysis-dashboard\data\netflix_titles.csv")
 #explore_data(df)
 
@@ -31,3 +33,6 @@ content_type_percentage(df)
 release_year_range(df)
 most_common_release_years(df)
 most_common_ratings(df)
+compare_content_types(df)
+compare_release_years(df)
+most_common_year_by_type(df)

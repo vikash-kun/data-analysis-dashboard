@@ -20,4 +20,31 @@ def most_common_release_years(df):
     print(df["release_year"].value_counts().head(10)) 
 def most_common_ratings(df):
     print("===== Most Common Ratings =====")
-    print(df["rating"].value_counts().head(10))   
+    print(df["rating"].value_counts().head(10)) 
+def compare_content_types(df):
+    print("===== Movies vs TV Shows =====")
+
+    movies = df[df["type"] == "Movie"]
+    tv_shows = df[df["type"] == "TV Show"]
+
+    print("Movies:", len(movies))
+    print("TV Shows:", len(tv_shows))   
+def compare_release_years(df):
+    print("===== Release Year Comparison =====")
+
+    movies = df[df["type"] == "Movie"]
+    tv_shows = df[df["type"] == "TV Show"]
+
+    print("Average Movie release year:", movies["release_year"].mean())
+    print("Average TV Show release year:", tv_shows["release_year"].mean())
+def most_common_year_by_type(df):
+    print("===== Most Common Release Year by Type =====")
+
+    movies = df[df["type"] == "Movie"]
+    tv_shows = df[df["type"] == "TV Show"]
+
+    print("\nMovies:")
+    print(movies["release_year"].value_counts().head(5))
+
+    print("\nTV Shows:")
+    print(tv_shows["release_year"].value_counts().head(5))           
