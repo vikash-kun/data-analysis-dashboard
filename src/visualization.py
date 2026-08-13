@@ -27,3 +27,22 @@ def plot_release_year_trend(df):
 
     plt.tight_layout()
     plt.show()    
+def plot_content_type_over_time(df):
+    movies = df[df["type"] == "Movie"]
+    tv_shows = df[df["type"] == "TV Show"]
+
+    movie_counts = movies["release_year"].value_counts().sort_index()
+    tv_counts = tv_shows["release_year"].value_counts().sort_index()
+
+    plt.figure(figsize=(12, 6))
+
+    plt.plot(movie_counts.index, movie_counts.values, label="Movies")
+    plt.plot(tv_counts.index, tv_counts.values, label="TV Shows")
+
+    plt.title("Movies vs TV Shows by Release Year")
+    plt.xlabel("Release Year")
+    plt.ylabel("Number of Titles")
+
+    plt.legend()
+    plt.tight_layout()
+    plt.show()    
