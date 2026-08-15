@@ -9,12 +9,15 @@ from src.eda import (
     most_common_ratings,
     compare_content_types,
     compare_release_years,
-    most_common_year_by_type
+    most_common_year_by_type,
+    rating_analysis,
+    top_ratings
 )
 from src.visualization import (
     plot_content_type,
     plot_release_year_trend,
-    plot_content_type_over_time
+    plot_content_type_over_time,
+    plot_ratings
 )
 df = pd.read_csv(r"C:\Users\Vikash\git demo\data-analysis-dashboard\data\netflix_titles.csv")
 #explore_data(df)
@@ -44,3 +47,7 @@ most_common_year_by_type(df)
 plot_content_type(df)
 plot_release_year_trend(df)
 plot_content_type_over_time(df)
+rating_analysis(df)
+top_ratings(df)
+
+plot_ratings(df)

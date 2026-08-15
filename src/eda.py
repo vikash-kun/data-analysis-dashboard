@@ -48,3 +48,15 @@ def most_common_year_by_type(df):
 
     print("\nTV Shows:")
     print(tv_shows["release_year"].value_counts().head(5))           
+def rating_analysis(df):
+    print("===== Rating Analysis =====")
+
+    ratings = df["rating"].value_counts()
+
+    print(ratings)
+def top_ratings(df):
+    print("===== Top 5 Netflix Ratings =====")
+
+    ratings = df["rating"].value_counts().head(5)
+
+    print(ratings)        

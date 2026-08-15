@@ -45,4 +45,19 @@ def plot_content_type_over_time(df):
 
     plt.legend()
     plt.tight_layout()
-    plt.show()    
+    plt.show()
+def plot_ratings(df):
+    ratings = df["rating"].value_counts().head(10)
+
+    plt.figure(figsize=(10, 6))
+
+    plt.bar(ratings.index, ratings.values)
+
+    plt.title("Top 10 Netflix Ratings")
+    plt.xlabel("Rating")
+    plt.ylabel("Number of Titles")
+
+    plt.xticks(rotation=45)
+
+    plt.tight_layout()
+    plt.show()        
