@@ -1,5 +1,12 @@
 import pandas as pd
-from src.clean_data import check_missing_values, total_missing_values, check_duplicates,show_missing_rows,clean_missing_values
+from src.clean_data import (
+    check_missing_values,
+    total_missing_values,
+    check_duplicates,
+    show_missing_rows,
+    clean_missing_values,
+    find_suspicious_ratings
+)
 from src.analysis import explore_data
 from src.eda import (
     content_type_count,
@@ -51,3 +58,4 @@ rating_analysis(df)
 top_ratings(df)
 
 plot_ratings(df)
+find_suspicious_ratings(df)

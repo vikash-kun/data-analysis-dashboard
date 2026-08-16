@@ -22,4 +22,15 @@ def clean_missing_values(df):
     df["rating"] = df["rating"].fillna("Unknown")
     df["duration"] = df["duration"].fillna("Unknown")
 
-    return df       
+    return df     
+def find_suspicious_ratings(df):
+    suspicious = df[
+        df["rating"].astype(str).str.contains("min", case=False, na=False)
+    ]
+
+    print("===== Suspicious Rating Values =====")
+    print(
+        suspicious[
+            ["show_id", "title", "type", "rating", "duration"]
+        ]
+    )   
