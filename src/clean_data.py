@@ -33,4 +33,14 @@ def find_suspicious_ratings(df):
         suspicious[
             ["show_id", "title", "type", "rating", "duration"]
         ]
-    )   
+    )
+
+def fix_rating_duration(df):
+    mask = df["rating"].astype(str).str.contains(
+        "min", case=False, na=False
+    )
+
+    df.loc[mask, "duration"] = df.loc[mask, "rating"]
+    df.loc[mask, "rating"] = "Unknown"
+
+    return df       
