@@ -59,4 +59,25 @@ def top_ratings(df):
 
     ratings = df["rating"].value_counts().head(5)
 
-    print(ratings)        
+    print(ratings)    
+
+def country_analysis(df):
+    print("===== Country Analysis =====")
+
+    print(df["country"].head(10))
+def top_countries(df):
+    countries = df["country"].str.split(", ")
+    
+    print(countries.head())
+def top_countries(df):
+    countries = df["country"].str.split(", ").explode()
+
+    print("===== Top Countries =====")
+    print(countries.value_counts().head(10))
+def top_countries(df):
+    countries = df["country"].str.split(", ").explode()
+
+    countries = countries[countries != "Unknown"]
+
+    print("===== Top 10 Countries =====")
+    print(countries.value_counts().head(10))            
