@@ -80,4 +80,13 @@ def top_countries(df):
     countries = countries[countries != "Unknown"]
 
     print("===== Top 10 Countries =====")
-    print(countries.value_counts().head(10))            
+    print(countries.value_counts().head(10)) 
+    
+def genre_analysis(df):
+    print("===== Top 10 Netflix Genres =====")
+
+    genres = df["listed_in"].str.split(", ").explode()
+
+    genre_counts = genres.value_counts()
+
+    print(genre_counts.head(10))           
