@@ -107,7 +107,8 @@ from src.eda import (
     top_ratings,
     country_analysis,
     top_countries,
-    genre_analysis
+    genre_analysis,
+    genre_by_content_type
 )
 from src.visualization import (
     plot_content_type,
@@ -169,3 +170,4 @@ plot_content_type_over_time(df)
 plot_ratings(df)
 
 genre_analysis(df)
+genre_by_content_type(df)

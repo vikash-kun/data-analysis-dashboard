@@ -90,3 +90,13 @@ def genre_analysis(df):
     genre_counts = genres.value_counts()
 
     print(genre_counts.head(10))           
+def genre_by_content_type(df):
+    print("===== Top Genres by Content Type =====")
+
+    for content_type in ["Movie", "TV Show"]:
+        data = df[df["type"] == content_type]
+
+        genres = data["listed_in"].str.split(", ").explode()
+
+        print(f"\n{content_type}:")
+        print(genres.value_counts().head(10))    
