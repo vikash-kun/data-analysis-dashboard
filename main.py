@@ -114,7 +114,8 @@ from src.visualization import (
     plot_content_type,
     plot_release_year_trend,
     plot_content_type_over_time,
-    plot_ratings
+    plot_ratings,
+    plot_top_genres
 )
 df = pd.read_csv(r"C:\Users\Vikash\git demo\data-analysis-dashboard\data\netflix_titles.csv")
 #explore_data(df)
@@ -168,6 +169,7 @@ plot_content_type(df)
 plot_release_year_trend(df)
 plot_content_type_over_time(df)
 plot_ratings(df)
+plot_top_genres(df)
 
 genre_analysis(df)
 genre_by_content_type(df)

@@ -60,4 +60,24 @@ def plot_ratings(df):
     plt.xticks(rotation=45)
 
     plt.tight_layout()
-    plt.show()        
+    plt.show()   
+
+def plot_top_genres(df, n=10):
+    genres = df["listed_in"].str.split(", ").explode()
+
+    genre_counts = genres.value_counts().head(n)
+
+    plt.figure(figsize=(10, 6))
+
+    genre_counts.sort_values().plot(kind="barh")
+
+    plt.title(f"Top {n} Netflix Genres")
+    plt.xlabel("Number of Titles")
+    plt.ylabel("Genre")
+
+    plt.tight_layout()
+
+    plt.savefig("top_genres.png")
+    plt.close()
+
+    print("Top genres chart saved as top_genres.png")     
