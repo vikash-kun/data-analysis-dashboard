@@ -81,3 +81,47 @@ def plot_top_genres(df, n=10):
     plt.close()
 
     print("Top genres chart saved as top_genres.png")     
+
+def plot_genres_by_content_type(df, n=10):
+    movie_genres = (
+        df[df["type"] == "Movie"]["listed_in"]
+        .str.split(", ")
+        .explode()
+        .value_counts()
+        .head(n)
+    )
+
+    tv_genres = (
+        df[df["type"] == "TV Show"]["listed_in"]
+        .str.split(", ")
+        .explode()
+        .value_counts()
+        .head(n)
+    )
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 7))
+
+    movie_genres.sort_values().plot(
+        kind="barh",
+        ax=axes[0]
+    )
+
+    axes[0].set_title("Top Movie Genres")
+    axes[0].set_xlabel("Number of Titles")
+    axes[0].set_ylabel("Genre")
+
+    tv_genres.sort_values().plot(
+        kind="barh",
+        ax=axes[1]
+    )
+
+    axes[1].set_title("Top TV Show Genres")
+    axes[1].set_xlabel("Number of Titles")
+    axes[1].set_ylabel("Genre")
+
+    plt.tight_layout()
+
+    plt.savefig("genres_by_content_type.png")
+    plt.close()
+
+    print("Genre comparison chart saved as genres_by_content_type.png")
