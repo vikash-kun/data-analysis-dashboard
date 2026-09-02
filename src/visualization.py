@@ -125,3 +125,24 @@ def plot_genres_by_content_type(df, n=10):
     plt.close()
 
     print("Genre comparison chart saved as genres_by_content_type.png")
+def plot_top_countries(df, n=10):
+    countries = df["country"].str.split(", ").explode()
+
+    countries = countries[countries != "Unknown"]
+
+    country_counts = countries.value_counts().head(n)
+
+    plt.figure(figsize=(10, 6))
+
+    country_counts.sort_values().plot(kind="barh")
+
+    plt.title(f"Top {n} Countries by Netflix Titles")
+    plt.xlabel("Number of Titles")
+    plt.ylabel("Country")
+
+    plt.tight_layout()
+
+    plt.savefig("top_countries.png")
+    plt.close()
+
+    print("Top countries chart saved as top_countries.png")
