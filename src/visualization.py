@@ -146,3 +146,47 @@ def plot_top_countries(df, n=10):
     plt.close()
 
     print("Top countries chart saved as top_countries.png")
+def plot_countries_by_content_type(df, n=10):
+    movie_countries = (
+        df[df["type"] == "Movie"]["country"]
+        .str.split(", ")
+        .explode()
+    )
+
+    tv_countries = (
+        df[df["type"] == "TV Show"]["country"]
+        .str.split(", ")
+        .explode()
+    )
+
+    movie_countries = movie_countries[movie_countries != "Unknown"]
+    tv_countries = tv_countries[tv_countries != "Unknown"]
+
+    movie_counts = movie_countries.value_counts().head(n)
+    tv_counts = tv_countries.value_counts().head(n)
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 7))
+
+    movie_counts.sort_values().plot(
+        kind="barh",
+        ax=axes[0]
+    )
+
+    axes[0].set_title("Top Countries for Movies")
+    axes[0].set_xlabel("Number of Movies")
+    axes[0].set_ylabel("Country")
+
+    tv_counts.sort_values().plot(
+        kind="barh",
+        ax=axes[1]
+    )
+
+    axes[1].set_title("Top Countries for TV Shows")
+    axes[1].set_xlabel("Number of TV Shows")
+    axes[1].set_ylabel("Country")
+
+    plt.tight_layout()
+    plt.savefig("countries_by_content_type.png")
+    plt.close()
+
+    print("Country comparison chart saved as countries_by_content_type.png")    

@@ -115,15 +115,17 @@ from src.eda import (
     top_ratings,
     country_analysis,
     top_countries,
-    genre_analysis,
-    genre_by_content_type
+    country_by_content_type
 )
 from src.visualization import (
     plot_content_type,
     plot_release_year_trend,
     plot_content_type_over_time,
     plot_ratings,
-    plot_top_genres
+    plot_top_genres,
+    plot_genres_by_content_type,
+    plot_top_countries,
+    plot_countries_by_content_type
 )
 df = pd.read_csv(r"C:\Users\Vikash\git demo\data-analysis-dashboard\data\netflix_titles.csv")
 #explore_data(df)
@@ -171,6 +173,7 @@ top_ratings(df)
 
 country_analysis(df)
 top_countries(df)
+country_by_content_type(df)
 
 # Charts
 plot_content_type(df)
@@ -178,6 +181,5 @@ plot_release_year_trend(df)
 plot_content_type_over_time(df)
 plot_ratings(df)
 plot_top_genres(df)
+plot_countries_by_content_type(df)
 
-genre_analysis(df)
-genre_by_content_type(df)

@@ -99,4 +99,28 @@ def genre_by_content_type(df):
         genres = data["listed_in"].str.split(", ").explode()
 
         print(f"\n{content_type}:")
-        print(genres.value_counts().head(10))    
+        print(genres.value_counts().head(10)) 
+def country_by_content_type(df, n=10):
+    movies = (
+        df[df["type"] == "Movie"]["country"]
+        .str.split(", ")
+        .explode()
+    )
+
+    tv_shows = (
+        df[df["type"] == "TV Show"]["country"]
+        .str.split(", ")
+        .explode()
+    )
+
+    movies = movies[movies != "Unknown"]
+    tv_shows = tv_shows[tv_shows != "Unknown"]
+
+    movie_counts = movies.value_counts().head(n)
+    tv_counts = tv_shows.value_counts().head(n)
+
+    print("\n===== Top Countries for Movies =====")
+    print(movie_counts)
+
+    print("\n===== Top Countries for TV Shows =====")
+    print(tv_counts)           
