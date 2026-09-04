@@ -189,4 +189,36 @@ def plot_countries_by_content_type(df, n=10):
     plt.savefig("countries_by_content_type.png")
     plt.close()
 
-    print("Country comparison chart saved as countries_by_content_type.png")    
+    print("Country comparison chart saved as countries_by_content_type.png")  
+
+def plot_country_genres(df, country, n=10):
+    country_df = df[
+        df["country"].str.contains(country, na=False)
+    ]
+
+    genres = (
+        country_df["listed_in"]
+        .str.split(", ")
+        .explode()
+    )
+
+    genre_counts = genres.value_counts().head(n)
+
+    plt.figure(figsize=(10, 6))
+
+    genre_counts.sort_values().plot(
+        kind="barh"
+    )
+
+    plt.title(f"Top {n} Genres in {country}")
+    plt.xlabel("Number of Titles")
+    plt.ylabel("Genre")
+
+    plt.tight_layout()
+
+    filename = f"{country.lower().replace(' ', '_')}_genres.png"
+
+    plt.savefig(filename)
+    plt.close()
+
+    print(f"{country} genre chart saved as {filename}")      

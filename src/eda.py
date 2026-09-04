@@ -123,4 +123,21 @@ def country_by_content_type(df, n=10):
     print(movie_counts)
 
     print("\n===== Top Countries for TV Shows =====")
-    print(tv_counts)           
+    print(tv_counts)  
+def country_genre_analysis(df, country, n=10):
+    country_df = df[
+        df["country"].str.contains(country, na=False)
+    ]
+
+    genres = (
+        country_df["listed_in"]
+        .str.split(", ")
+        .explode()
+    )
+
+    genre_counts = genres.value_counts().head(n)
+
+    print(f"\n===== Top Genres in {country} =====")
+    print(genre_counts)
+
+    return genre_counts             
